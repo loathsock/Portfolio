@@ -1,24 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import NavBar from './components/NavBar/NavBar';
+import Main from './components/Main/Main';
+import { BodyWrapper } from './components/NavBar/NavBarStyles';
+import { BrowserRouter as Router,
+  Switch,
+  Route,
+  Link} from 'react-router-dom'
 
 function App() {
-  return (
+  const [isOpen, setIsOpen] = useState(false)   
+  const [darkMode, setDarkMode] = useState(false)   
+  const toggle = () => {
+    setIsOpen(!isOpen)
+  } 
+  const toggleMode = () => {
+    setDarkMode(!darkMode)
+  } 
+  return (  
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BodyWrapper darkMode={darkMode}> 
+    <Router>   
+         <NavBar isOpen={isOpen} darkMode={darkMode} toggle={toggle} toggleMode={toggleMode}  /> 
+         <Main />
+    </Router>  
+     </BodyWrapper>
+     
     </div>
   );
 }

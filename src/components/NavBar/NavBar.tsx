@@ -18,18 +18,13 @@ interface NavTypes  {
 }
 
 
-const NavBar= ({isOpen, darkMode, toggleMode, toggle}: NavTypes) => {
-    console.log(darkMode); 
-     
-    return (
-          
-      
-        <header>
-        
+const NavBar= ({isOpen, darkMode, toggleMode, toggle}: NavTypes) => {   
 
+    return (
+    
+        <Nav isOpen={isOpen} darkMode={darkMode} >   
         <BurgerMenu isOpen={isOpen}  darkMode={darkMode}  toggle={toggle} />
         <Menu isOpen={isOpen} toggle={toggle} />
-        <Nav isOpen={isOpen} darkMode={darkMode} >   
             
             <Logo isOpen={isOpen} >
               <img className='logo-image'  src={logo} />
@@ -63,7 +58,7 @@ const NavBar= ({isOpen, darkMode, toggleMode, toggle}: NavTypes) => {
 
             </Ul>
         </Nav>                                                                                             
-                    </header>
+   
    
        
     )

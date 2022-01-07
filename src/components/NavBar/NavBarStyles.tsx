@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {theme} from './theme.js' 
+import {theme} from './theme' 
 
 interface StyledNav {
   isOpen?: boolean,
@@ -9,23 +9,22 @@ interface StyledNav {
 
  
 export const BodyWrapper = styled.div<StyledNav>`
-
-width: 100vw;
-height: 100vh;
-z-index: -1;
-  background-color: ${(darkMode) => (darkMode.darkMode ? theme.primaryDark : "inherit")};
-    
-     display: block;
+    width: 100%;
+    min-height: 100;
+    background-color: ${(darkMode) => (darkMode.darkMode ? theme.primaryDark : "inherit")};
 `;  
 
 export const Nav = styled.nav<StyledNav>`
-  background-color: ${(darkMode) => (darkMode.darkMode ? theme.primaryDark : "inherit")};
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100vw;
-  height: 14vh;
-  padding: 0 3rem;
+      position:sticky; 
+      position: -webkit-sticky;
+      top: 0;
+      background-color: ${(darkMode) => (darkMode.darkMode ? theme.primaryDark : "inherit")};
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 100%;
+      height: 14vh; 
+ 
 `;
 export const Ul = styled.ul`
   display: flex;
@@ -80,7 +79,7 @@ display: none;
   @media (max-width: 500px) { 
        display: flex;
        position: absolute;
-       top: 5%;
+       top: 30%;
        right: 1.5rem;
        // display: flex;
        flex-direction: column;

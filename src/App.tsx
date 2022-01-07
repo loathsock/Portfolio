@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
+import Footer from './components/Footer/Footer';   
 import Main from './components/Main/Main';
 import { BodyWrapper } from './components/NavBar/NavBarStyles';
 import { BrowserRouter as Router,
@@ -8,7 +9,12 @@ import { BrowserRouter as Router,
   Route,
   Link} from 'react-router-dom'
 
+
+
+
+
 function App() {
+  
   const [isOpen, setIsOpen] = useState(false)   
   const [darkMode, setDarkMode] = useState(false)   
   const toggle = () => {
@@ -17,16 +23,28 @@ function App() {
   const toggleMode = () => {
     setDarkMode(!darkMode)
   } 
+  
   return (  
-    <div className="App">
+    <>
       <BodyWrapper darkMode={darkMode}> 
-    <Router>   
+    <Router> 
+      <Switch>
+         
+         <Route exact path="/">
          <NavBar isOpen={isOpen} darkMode={darkMode} toggle={toggle} toggleMode={toggleMode}  /> 
-         <Main />
+         <Main darkMode={darkMode} toggleMode={toggleMode} /> 
+            <Footer />
+
+          </Route> 
+
+          <Route path="/foot">
+            <Footer />
+          </Route>
+        </Switch>  
+       
     </Router>  
-     </BodyWrapper>
-     
-    </div>
+     </BodyWrapper>  
+    </>
   );
 }
 

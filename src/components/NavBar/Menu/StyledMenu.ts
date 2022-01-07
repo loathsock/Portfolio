@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import {theme} from './../theme';
 interface Menu {
   isOpen: boolean,
   toggle: (param: any) => void,
@@ -7,16 +6,16 @@ interface Menu {
 }
 
 
-export const StyledMenu = styled.nav<Menu>`
-  display: none;
+export const StyledMenu = styled.aside<Menu>`
+  display: none; 
   @media (max-width: 500px) {
   display: ${(isOpen) => (isOpen.isOpen ? "flex" : "none")};
   flex-direction: column;
   justify-content: space-evenly;
-  padding: .5rem 0;
+  align-items: center;
   background: #424242;
-  border-radius: 0 0 0% 80%;
-  height: 85%;
+  border-radius: 0 0 0% 90%;
+  height: 400px; 
   width: 100%;
   position: absolute;
   top: 0;
